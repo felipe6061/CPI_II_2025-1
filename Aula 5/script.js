@@ -1,67 +1,68 @@
-// 1. Declaração de Função Tradicional
-function somarDoisNumeros(num1, num2) {
-    return num1 + num2;
+// 1. Declaração de Função Tradicional: Crie uma função tradicional chamada `somarDoisNumeros` 
+// que aceite dois parâmetros, `num1` e `num2`, e retorne a soma deles.
+function soma(a, b) {
+    return a + b;
 }
+console.log(soma(5, 3));
 
-// 2. Chamada e Reutilização de Função
-console.log(somarDoisNumeros(5, 3));    // 8
-console.log(somarDoisNumeros(10, 20));  // 30
-console.log(somarDoisNumeros(-1, 7));   // 6
+// 2. Chamada e Reutilização de Função: Chame a função `somarDoisNumeros` que você criou no Exercício 1 três vezes, 
+// com diferentes pares de números (ex: 5 e 3; 10 e 20; -1 e 7), e imprima o resultado de cada chamada no console. 
+console.log(soma(10, 20)); 
+console.log(soma(-1, 7));  
 
-// 3. Parâmetros e Saudação
-function gerarSaudacao(nome) {
-    return `Olá, ${nome}! Bem-vindo(a)!`;
+// 3. Parâmetros e Saudação: Desenvolva uma função tradicional chamada `gerarSaudacao` que receba um parâmetro 
+// `nome` (uma string) e retorne uma string como "Olá, [nome]! Bem-vindo(a)!". Teste a função com o seu nome. 
+function saudar(nome) {
+    return `Olá, ${nome}!`;
 }
-console.log(gerarSaudacao("SeuNome")); // Substitua "SeuNome" pelo seu nome
+console.log(saudar("Ana"));
 
-// 4. Valor de Retorno e Cálculo
-function calcularAreaRetangulo(largura, altura) {
-    return largura * altura;
+// 4. Função que retorna valor
+function area(l, a) {
+    return l * a;
 }
-let areaCalculada = calcularAreaRetangulo(5, 3);
-console.log(areaCalculada); // 15
+let resultado = area(5, 3);
+console.log(resultado);
 
-// 5. Função Anônima (Function Expression)
-const multiplicar = function(a, b) {
+// 5. Função anônima
+const mult = function(a, b) {
     return a * b;
 };
-console.log(multiplicar(4, 6)); // 24
+console.log(mult(4, 6));
 
-// 6. Arrow Function (Sintaxe Básica)
-const multiplicarArrow = (a, b) => {
+// 6. Arrow function básica
+const multArrow = (a, b) => {
     return a * b;
 };
-console.log(multiplicarArrow(4, 6)); // 24
+console.log(multArrow(4, 6));
 
-// 7. Arrow Function (Retorno Implícito)
-const dobrarNumero = n => n * 2;
-console.log(dobrarNumero(7)); // 14
+// 7. Arrow Function (Retorno Implícito): 
+const dobro = n => n * 2;
+console.log(dobro(7)); 
 
-// 8. Comportamento do `this` (Função Tradicional em Objeto)
-const pessoa = {
-    nome: "Maria",
-    idade: 25,
-    apresentar: function() {
-        console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+// 8. Comportamento do `this` (Função Tradicional em Objeto):
+const usuario = {
+    nome: "Carlos",
+    idade: 30,
+    mostrar() {
+        console.log(`Nome: ${this.nome}, Idade: ${this.idade}`);
     }
 };
-pessoa.apresentar();
-// Explicação: Neste contexto, `this` referencia o próprio objeto `pessoa`.
+usuario.mostrar();
 
-// 9. Comportamento do `this` (Arrow Function em Objeto)
-pessoa.apresentarArrow = () => {
-    console.log(`Olá, meu nome é ${this.nome}.`);
+// 9. Comportamento do `this` (Arrow Function em Objeto): 
+usuario.mostrarArrow = () => {
+    console.log(`Nome: ${this.nome}`);
 };
-pessoa.apresentarArrow();
-// Explicação: Em Arrow Functions, `this` não referencia o objeto `pessoa`, mas sim o contexto léxico onde a função foi criada (geralmente o escopo global ou do módulo).
+usuario.mostrarArrow(); // Undefined
 
-// 10. Métodos de Objeto
-const produto = {
-    nome: "Caderno",
-    preco: 10,
-    quantidade: 3,
-    calcularValorTotal: function() {
-        return this.preco * this.quantidade;
+// 10. Métodos de Objeto:
+const item = {
+    nome: "Livro",
+    preco: 15,
+    qtde: 2,
+    total() {
+        return this.preco * this.qtde;
     }
 };
-console.log(produto.calcularValorTotal()); // 30
+console.log(item.total()); // 30
