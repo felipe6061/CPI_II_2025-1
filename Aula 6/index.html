@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Questões de Objetos em JavaScript</title>
+    <style>
+        .resposta {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 3px solid #4CAF50;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Questões sobre Objetos em JavaScript</h1>
+    <ol>
+        <li>
+            <strong>O que é um objeto em JavaScript?</strong>
+            <div class="resposta">
+                Um objeto em JavaScript é uma coleção de propriedades, onde cada propriedade é uma associação entre um nome (chave) e um valor. Pode conter variáveis (chamadas de propriedades) e funções (chamadas de métodos). Exemplo representando uma pessoa:
+                <pre>
+const pessoa = {
+    nome: "Maria",
+    idade: 30,
+    profissao: "Engenheira"
+};</pre>
+            </div>
+        </li>
+
+        <li>
+            <strong>Quais são os tipos de valores que uma propriedade de objeto pode conter?</strong>
+            <div class="resposta">
+                Uma propriedade pode conter qualquer tipo de dado válido em JavaScript:
+                <pre>
+const exemplos = {
+    string: "Texto",      // String
+    numero: 42,          // Número
+    booleano: true,      // Booleano
+    array: [1, 2, 3],    // Array
+    objeto: {            // Outro objeto
+        chave: "valor"
+    },
+    funcao: function() { // Função
+        console.log("Olá");
+    },
+    nulo: null,          // Null
+    indefinido: undefined // Undefined
+};</pre>
+            </div>
+        </li>
+
+        <li>
+            <strong>Diferença entre propriedades e métodos em um objeto</strong>
+            <div class="resposta">
+                <p><strong>Propriedades</strong> são características do objeto (armazenam valores). <strong>Métodos</strong> são ações que o objeto pode realizar (funções).</p>
+                <pre>
+const carro = {
+    // Propriedades
+    marca: "Ford",
+    ano: 2020,
+    
+    // Método
+    ligar: function() {
+        console.log("Carro ligado");
+    }
+};</pre>
+            </div>
+        </li>
+
+        <li>
+            <strong>Adicionar método saudar ao objeto aluno</strong>
+            <div class="resposta">
+                <pre>
+const aluno = {
+    nome: "João",
+    idade: 20,
+    aprovado: true,
+    saudar: function() {
+        console.log("Olá, meu nome é " + this.nome);
+    }
+};</pre>
+            </div>
+        </li>
+
+        <li>
+            <strong>O que são objetos aninhados?</strong>
+            <div class="resposta">
+                <p>São objetos dentro de outros objetos, usados para organizar informações complexas. Exemplo:</p>
+                <pre>
+const pessoa = {
+    nome: "Carlos",
+    endereco: {
+        rua: "Rua das Flores",
+        numero: 123,
+        cidade: "São Paulo"
+    }
+};</pre>
+            </div>
+        </li>
+
+        <li>
+            <strong>Compare objetos e arrays</strong>
+            <div class="resposta">
+                <p><strong>Arrays</strong> são usados para listas ordenadas de itens (acessados por índice numérico). <strong>Objetos</strong> são usados para coleções não ordenadas de pares chave-valor, quando os itens têm nomes significativos.</p>
+                <p>Use array para listas simples (como uma lista de compras) e objeto para representar entidades com propriedades (como um usuário com nome, email, etc.).</p>
+            </div>
+        </li>
+
+        <li>
+            <strong>Acessar propriedades com for...in</strong>
+            <div class="resposta">
+                <pre>
+const carro = {
+    marca: "Toyota",
+    modelo: "Corolla",
+    ano: 2022
+};
+
+for (let propriedade in carro) {
+    console.log(propriedade + ": " + carro[propriedade]);
+}</pre>
+                Saída:
+                <pre>
+marca: Toyota
+modelo: Corolla
+ano: 2022</pre>
+            </div>
+        </li>
+
+        <li>
+            <strong>O que é uma função construtora?</strong>
+            <div class="resposta">
+                <p>É uma função usada para criar objetos com a mesma estrutura. Começa com letra maiúscula por convenção, para diferenciar de funções normais.</p>
+                <pre>
+function Carro(marca, modelo) {
+    this.marca = marca;
+    this.modelo = modelo;
+}</pre>
+            </div>
+        </li>
+
+        <li>
+            <strong>Função construtora Livro</strong>
+            <div class="resposta">
+                <pre>
+function Livro(titulo, autor) {
+    this.titulo = titulo;
+    this.autor = autor;
+    this.exibirInfo = function() {
+        console.log(`Título: ${this.titulo}, Autor: ${this.autor}`);
+    }
+}
+
+const meuLivro = new Livro("Dom Casmurro", "Machado de Assis");
+meuLivro.exibirInfo();</pre>
+            </div>
+        </li>
+
+        <li>
+            <strong>O que acontece ao usar new Pessoa("Maria", 25)?</strong>
+            <div class="resposta">
+                <p>Quando usamos <code>new</code>, acontece:</p>
+                <ol>
+                    <li>Um novo objeto vazio é criado</li>
+                    <li>A função é executada com <code>this</code> apontando para o novo objeto</li>
+                    <li>As propriedades e métodos são adicionados ao objeto</li>
+                    <li>O objeto é retornado automaticamente (não precisa de return)</li>
+                </ol>
+                <p>No exemplo, cria um objeto Pessoa com nome "Maria", idade 25 e um método saudar().</p>
+            </div>
+        </li>
+    </ol>
+</body>
+</html>
