@@ -1,5 +1,4 @@
-// 1. Declaração de Função Tradicional: Crie uma função tradicional chamada `somarDoisNumeros` 
-// que aceite dois parâmetros, `num1` e `num2`, e retorne a soma deles.
+//Declaração de Função Tradicional
 function soma(a, b) {
     return a + b;
 }
