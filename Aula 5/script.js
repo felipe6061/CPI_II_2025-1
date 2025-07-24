@@ -4,13 +4,11 @@ function soma(a, b) {
 }
 console.log(soma(5, 3));
 
-// 2. Chamada e Reutilização de Função: Chame a função `somarDoisNumeros` que você criou no Exercício 1 três vezes, 
-// com diferentes pares de números (ex: 5 e 3; 10 e 20; -1 e 7), e imprima o resultado de cada chamada no console. 
+// 2. Chamada e Reutilização de Função:
 console.log(soma(10, 20)); 
 console.log(soma(-1, 7));  
 
-// 3. Parâmetros e Saudação: Desenvolva uma função tradicional chamada `gerarSaudacao` que receba um parâmetro 
-// `nome` (uma string) e retorne uma string como "Olá, [nome]! Bem-vindo(a)!". Teste a função com o seu nome. 
+// 3. Função de Saudação
 function saudar(nome) {
     return `Olá, ${nome}!`;
 }

@@ -1,5 +1,5 @@
 // 1. O que é array?
-// É uma lista que guarda várias coisas juntas, como uma lista de compras
+// É uma lista que guarda várias tipos de dados, como uma lista de compras
 
 // 2. Criando array de cores
 let cores = ["azul", "verde", "amarelo"];
