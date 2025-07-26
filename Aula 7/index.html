@@ -27,147 +27,146 @@
     
     <ol>
         <li>
-            <strong>O que é o DOM e qual o seu papel na manipulação de páginas web com JavaScript?</strong>
+            <strong>O que é o DOM e para que ele serve?</strong>
             <div class="resposta">
-                <p>O DOM (Document Object Model) é uma representação em forma de árvore de todos os elementos de uma página HTML. Ele permite que o JavaScript:</p>
+                <p>O DOM (Document Object Model) é como um "mapa" de todos os elementos da página. Ele organiza todos os elementos (títulos, parágrafos, imagens) numa estrutura clara que o JavaScript consegue entender e modificar.</p>
                 <ul>
-                    <li>Acesse e modifique elementos HTML</li>
-                    <li>Altere estilos CSS</li>
-                    <li>Adicione ou remova elementos</li>
-                    <li>Responda a eventos (cliques, teclas, etc.)</li>
+                    <li>Encontre e mude partes do HTML</li>
+                    <li>Altere cores, tamanhos e outros estilos</li>
+                    <li>Adicione ou remova coisas da página</li>
+                    <li>Reaja a cliques e outras ações do usuário</li>
                 </ul>
-                <p>O DOM conecta o HTML com o JavaScript, tornando as páginas dinâmicas e interativas.</p>
+                <p>É como um tradutor que ajuda o JavaScript a entender e modificar a página.</p>
             </div>
         </li>
 
         <li>
             <strong>Qual a diferença entre getElementById() e querySelector()?</strong>
             <div class="resposta">
-                <p><code>getElementById()</code> seleciona apenas por ID, enquanto <code>querySelector()</code> usa seletores CSS (mais versátil). Exemplos:</p>
+                <p><code>getElementById()</code> só busca por ID, enquanto <code>querySelector()</code> é mais esperto e aceita vários tipos de busca:</p>
                 <pre>
-// getElementById - seleciona apenas por ID
+// getElementById - só funciona com ID
 let elemento = document.getElementById('meuId');
 
-// querySelector - pode usar qualquer seletor CSS
-let elemento = document.querySelector('#meuId'); // Por ID
-let elemento = document.querySelector('.minhaClasse'); // Por classe
-let elemento = document.querySelector('div p'); // Por hierarquia</pre>
+// querySelector - busca de vários jeitos
+let elemento = document.querySelector('#meuId');  // Por ID
+let elemento = document.querySelector('.classe'); // Por classe
+let elemento = document.querySelector('div p');   // Por relação entre tags</pre>
             </div>
         </li>
 
         <li>
-            <strong>O que é HTMLCollection e como ela se comporta?</strong>
+            <strong>O que é HTMLCollection?</strong>
             <div class="resposta">
-                <p><code>HTMLCollection</code> é uma lista viva de elementos retornada por métodos como <code>getElementsByClassName()</code>. Ela se atualiza automaticamente quando novos elementos com a mesma classe são adicionados ao DOM.</p>
+                <p>É uma lista de elementos que se atualiza sozinha quando a página muda. Por exemplo:</p>
                 <pre>
 let itens = document.getElementsByClassName('item');
-console.log(itens.length); // Mostra 2 itens inicialmente
+console.log(itens.length); // Mostra 2 itens
 
-// Adiciona novo item dinamicamente
+// Adiciona um item novo
 let novoItem = document.createElement('div');
 novoItem.className = 'item';
 document.body.appendChild(novoItem);
 
-console.log(itens.length); // Agora mostra 3 itens, sem precisar re-selecionar</pre>
+console.log(itens.length); // Agora mostra 3, sem precisar buscar de novo</pre>
+                <p>Diferente de arrays normais, essa lista muda automaticamente.</p>
             </div>
         </li>
 
         <li>
-            <strong>Manipulando lista de itens</strong>
+            <strong>Como mudar a cor de vários itens de uma vez?</strong>
             <div class="resposta">
-                <p>Código para selecionar e alterar a cor dos itens:</p>
                 <pre>
 let itens = document.querySelectorAll('.item');
 
 itens.forEach(item => {
-    item.style.color = 'blue';
+    item.style.color = 'blue'; // Muda cor para azul
 });</pre>
             </div>
         </li>
 
         <li>
-            <strong>Diferença entre innerHTML e textContent</strong>
+            <strong>Qual a diferença entre innerHTML e textContent?</strong>
             <div class="resposta">
-                <p><code>innerHTML</code> retorna/define todo o conteúdo HTML, incluindo tags. <code>textContent</code> retorna/define apenas o texto, ignorando tags.</p>
-                <p>Use <code>innerHTML</code> quando precisar incluir tags HTML. Use <code>textContent</code> quando quiser apenas o texto (mais seguro contra XSS).</p>
+                <p><code>innerHTML</code> entende tags HTML, <code>textContent</code> só trabalha com texto puro.</p>
+                <p><b>Quando usar cada um:</b></p>
                 <pre>
 let div = document.querySelector('div');
 
-// textContent (seguro)
-div.textContent = '&lt;script&gt;código malicioso&lt;/script&gt;'; // Mostra como texto
+// textContent - mais seguro
+div.textContent = '&lt;script&gt;código perigoso&lt;/script&gt;'; // Aparece como texto
 
-// innerHTML (permite HTML)
-div.innerHTML = '&lt;strong&gt;Negrito&lt;/strong&gt;'; // Renderiza o negrito</pre>
+// innerHTML - entende HTML
+div.innerHTML = '&lt;strong&gt;Texto em negrito&lt;/strong&gt;'; // Realmente fica em negrito</pre>
+                <p>Dica: Use textContent quando não precisar de formatação.</p>
             </div>
         </li>
 
         <li>
-            <strong>Alterando atributos de imagem</strong>
+            <strong>Como trocar uma imagem?</strong>
             <div class="resposta">
-                <p>Função para modificar a imagem:</p>
                 <pre>
-function alterarImagem() {
+function trocarImagem() {
     let foto = document.getElementById('foto');
-    foto.src = 'imagem2.jpg';
-    foto.alt = 'Nova imagem';
-    foto.style.width = '300px';
+    foto.src = 'imagem2.jpg';    // Caminho da nova imagem
+    foto.alt = 'Foto nova';      // Texto alternativo
+    foto.style.width = '300px';  // Largura
 }</pre>
             </div>
         </li>
 
         <li>
-            <strong>Adicionando parágrafo</strong>
+            <strong>Como adicionar um parágrafo novo?</strong>
             <div class="resposta">
-                <p>Código completo:</p>
                 <pre>
 let div = document.getElementById('conteudo');
-let novoParagrafo = document.createElement('p');
-novoParagrafo.textContent = 'Bem-vindo!';
-div.appendChild(novoParagrafo);</pre>
+let paragrafoNovo = document.createElement('p');
+paragrafoNovo.textContent = 'Olá!';  // Texto do parágrafo
+div.appendChild(paragrafoNovo);       // Adiciona na página</pre>
             </div>
         </li>
 
         <li>
-            <strong>Métodos para navegar no DOM</strong>
+            <strong>Como encontrar elementos próximos?</strong>
             <div class="resposta">
+                <p>Você pode navegar pelo "mapa" do DOM assim:</p>
                 <ul>
-                    <li><code>parentNode</code> - Acessa o elemento pai</li>
-                    <li><code>children</code> - Retorna os elementos filhos (não inclui textos)</li>
-                    <li><code>nextElementSibling</code> - Acessa o próximo irmão</li>
-                    <li><code>previousElementSibling</code> - Acessa o irmão anterior</li>
+                    <li><code>parentNode</code> - Elemento pai</li>
+                    <li><code>children</code> - Elementos filhos diretos</li>
+                    <li><code>nextElementSibling</code> - Próximo irmão</li>
+                    <li><code>previousElementSibling</code> - Irmão anterior</li>
                 </ul>
                 <pre>
 let item = document.querySelector('li');
-let pai = item.parentNode; // Pai (ul)
-let primeiroFilho = pai.children[0]; // Primeiro li
-let proximo = item.nextElementSibling; // Próximo li</pre>
+let pai = item.parentNode;          // Pai (a tag ul)
+let primeiroFilho = pai.children[0]; // Primeiro item
+let proximo = item.nextElementSibling; // Próximo item da lista</pre>
             </div>
         </li>
 
         <li>
-            <strong>O que será exibido no console?</strong>
+            <strong>O que aparece no console?</strong>
             <div class="resposta">
-                <p>Será exibido: <code>"Olá, mundo!"</code></p>
-                <p><code>textContent</code> pega todo o texto dentro do elemento, incluindo o texto dentro de elementos filhos, mas sem as tags HTML.</p>
+                <p>Aparece: <code>"Olá, mundo!"</code></p>
+                <p>Porque <code>textContent</code> pega todo o texto, inclusive dentro de outras tags, mas sem as tags em si.</p>
             </div>
         </li>
 
         <li>
-            <strong>Desafio prático: Adicionar novo item</strong>
+            <strong>Como adicionar um item numa lista?</strong>
             <div class="resposta">
-                <p>Solução:</p>
                 <pre>
 function adicionarItem() {
     let lista = document.getElementById('minhaLista');
-    let novoItem = document.createElement('li');
-    novoItem.textContent = 'Novo item';
-    lista.appendChild(novoItem);
+    let itemNovo = document.createElement('li');
+    itemNovo.textContent = 'Item novo';
+    lista.appendChild(itemNovo);
 }</pre>
             </div>
         </li>
     </ol>
 
-    <!-- Elementos de exemplo para as questões -->
+    <!-- Elementos usados nos exemplos -->
     <ul id="lista">
       <li class="item">Item 1</li>
       <li class="item">Item 2</li>
